@@ -364,6 +364,13 @@ void setup_lorawan() {
     LMIC_setClockError(MAX_CLOCK_ERROR * 1 / 100);
 
 #if defined(CFG_us915) || defined(CFG_au915)
+    // Set data rate and transmit power
+    // All this gets overridden post join, anyway.
+#if defined(CFG_us915)
+    LMIC_setDrTxpow(US915_DR_SF7, 21);
+#else
+    LMIC_setDrTxpow(AU915_DR_SF7, 30);
+#endif
     // in the US/AU, TTN uses the second sub band, 1 in a zero based count. This will
     // get overridden after the join by parameters from the network. If working with other
     // networks or in other regions, this will need to be changed.

@@ -164,13 +164,16 @@ function decodeUplink(input) {
         response[field['name'] + '_' + field['channel']] = field['value'];
     });
 
-    // Rename fields
+    // Rename fields for TTN Mapper & Traccar compatibility
     field_aliases = {
         'time_0': 'time',
         'digital_in_0': 'sats',
         'analog_in_0': 'hdop',
         'direction_0': 'heading',
         'distance_0': 'speed',
+        'temperature_0': 'temp1',
+        'barometer_0': 'barometer',
+        'humidity_0': 'humidity',
     };
 
     Object.keys(field_aliases).forEach(function(alias) {
