@@ -191,6 +191,12 @@ function decodeUplink(input) {
         delete response['gps_0'];
     }
 
+    // Convert Time to ISO format
+    if (response.hasOwnProperty('time')) {
+        let date = new Date(response['time'] * 1000);
+        response['time'] = date.toISOString();
+    }
+
     return {
        data: response
     };
