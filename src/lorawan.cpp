@@ -91,9 +91,10 @@ const unsigned TX_INTERVAL = 60;
 // Pin mapping
 const lmic_pinmap lmic_pins = {
     .nss = SOC_GPIO_PIN_SS,
-    .rxtx = LMIC_UNUSED_PIN,
+    .rxtx = SOC_GPIO_PIN_ANT_RXTX,
     .rst = SOC_GPIO_PIN_RST,
     .dio = {SOC_GPIO_PIN_DIO0, SOC_GPIO_PIN_DIO1, SOC_GPIO_PIN_DIO2},
+    .rxtx_rx_active = 1,
 };
 
 void printHex2(unsigned v) {
